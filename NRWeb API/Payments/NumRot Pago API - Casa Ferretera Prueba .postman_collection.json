@@ -1,0 +1,112 @@
+{
+	"info": {
+		"_postman_id": "6521212c-1513-4db2-9c22-0f096e5a1019",
+		"name": "NumRot Pago API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19025412",
+		"_collection_link": "https://galactic-robot-945496.postman.co/workspace/NumRot~9d173656-88e3-4a6c-a495-d368dc1a7b12/collection/19025412-6521212c-1513-4db2-9c22-0f096e5a1019?action=share&source=collection_link&creator=19025412"
+	},
+	"item": [
+		{
+			"name": "Pruebas",
+			"item": [
+				{
+					"name": "GetPaymentStatus (Casa Ferretera)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Key\": \"b00c2e99db58391c91061a5c8d7db652\",\r\n    \"Secret\": \"4b861fb014d36032cff2dd2083f7e1a3\",\r\n    \"Documents\": [\r\n        {\r\n            \"IdEmpresa\": \"CasaFerreteraPrueba\",\r\n            \"IdDocumento\": \"SETT9866\",\r\n            \"TipoDocumento\": \"facturadeventa\"\r\n        },\r\n        {\r\n            \"IdEmpresa\": \"CasaFerreteraPrueba\",\r\n            \"IdDocumento\": \"SETT14170\",\r\n            \"TipoDocumento\": \"facturadeventa\"\r\n        },\r\n        {\r\n            \"IdEmpresa\": \"CasaFerreteraPrueba\",\r\n            \"IdDocumento\": \"SETT78403\",\r\n            \"TipoDocumento\": \"facturadeventa\"\r\n        },\r\n        {\r\n            \"IdEmpresa\": \"CasaFerreteraPrueba\",\r\n            \"IdDocumento\": \"SETT48819\",\r\n            \"TipoDocumento\": \"facturadeventa\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://prueba.numrot.net/NRWApiPrueba/api/payment/GetPaymentStatus",
+							"protocol": "https",
+							"host": [
+								"prueba",
+								"numrot",
+								"net"
+							],
+							"path": [
+								"NRWApiPrueba",
+								"api",
+								"payment",
+								"GetPaymentStatus"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SetManual(Casa Ferretera)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"Key\": \"b00c2e99db58391c91061a5c8d7db652\",\r\n  \"Secret\": \"4b861fb014d36032cff2dd2083f7e1a3\",\r\n  \"Payments\": [\r\n    {\r\n      \"DocumentNumber\": \"SE78403\",\r\n      \"CustomerId\": \"222222222222\",\r\n      \"PaymentDate\": \"2025-06-09 19:55:32\",\r\n      \"Amount\": 53850,\r\n      \"PaymentDescription\": \"Pago por ventanilla\",\r\n      \"ReceiptCode\": \"50035\"\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://prueba.numrot.net/NRWApiPrueba/api/Payment/SetManual",
+							"protocol": "https",
+							"host": [
+								"prueba",
+								"numrot",
+								"net"
+							],
+							"path": [
+								"NRWApiPrueba",
+								"api",
+								"Payment",
+								"SetManual"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetPaymentsByRange (Casa Ferretera)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"Key\": \"b00c2e99db58391c91061a5c8d7db652\",\r\n  \"Secret\": \"4b861fb014d36032cff2dd2083f7e1a3\",\r\n  \"InitialDate\": \"2025-01-01\",\r\n  \"FinalDate\": \"2025-06-07\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://prueba.numrot.net/NRWApiPrueba/api/Payment/GetPaymentsByRange",
+							"protocol": "https",
+							"host": [
+								"prueba",
+								"numrot",
+								"net"
+							],
+							"path": [
+								"NRWApiPrueba",
+								"api",
+								"Payment",
+								"GetPaymentsByRange"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
