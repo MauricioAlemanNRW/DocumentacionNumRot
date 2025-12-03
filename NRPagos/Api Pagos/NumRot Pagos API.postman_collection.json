@@ -1,0 +1,253 @@
+{
+	"info": {
+		"_postman_id": "69e986d8-a21a-4b15-a049-6d70e0ee071f",
+		"name": "NumRot Pagos API",
+		"description": "Con el api de NumRot Pagos podras pagar documentos y consultar el estado de tus pagos.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19025412",
+		"_collection_link": "https://galactic-robot-945496.postman.co/workspace/NRPagos~f904ba0e-6975-42ef-adbd-e4ae2c6e61bb/collection/19025412-69e986d8-a21a-4b15-a049-6d70e0ee071f?action=share&source=collection_link&creator=19025412"
+	},
+	"item": [
+		{
+			"name": "Pruebas",
+			"item": [
+				{
+					"name": "Autenticarse",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Username\": \"DiabonosPrueba\",\r\n    \"Password\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://numrot3.net:44301/api/numrotpagos/login",
+							"protocol": "https",
+							"host": [
+								"numrot3",
+								"net"
+							],
+							"port": "44301",
+							"path": [
+								"api",
+								"numrotpagos",
+								"login"
+							]
+						},
+						"description": "El primer llamado que debe realizar a nuestra api es para autenticarse y recibir un token de acceso.\n\nEste token lo podrá usar para consumir los demás recursos del api y tiene un tiempo de expiración de 60 minutos."
+					},
+					"response": []
+				},
+				{
+					"name": "IniciarProcesoPago",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkRpYWJvbm9zUHJ1ZWJhIiwicm9sZSI6IkNsaWVudGUiLCJuYmYiOjE3MjU2MzkzNTgsImV4cCI6MTcyNTY0Mjk1OCwiaWF0IjoxNzI1NjM5MzU4LCJpc3MiOiJOclBhZ29zIiwiYXVkIjoiTnJQYWdvc0NsaWVudGVzIn0.VpQVYLF7U_DvhXes3nKxzV_s0Rp2ezGLGfvVzKotdiY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"IdEmpresa\": \"DiabonosPrueba\",\r\n    \"Descripcion\": \"Pago de los documentos: FEQ83x\",\r\n    \"PagoTS\": null,\r\n    \"FormaPago\": null,\r\n    \"ValorTotal\": 228256.0,\r\n    \"ValorIva\": null,\r\n    \"Moneda\": \"COP\",\r\n    \"TicketId\": null,\r\n    \"IdCliente\": \"1152713763\",\r\n    \"ClienteTipoId\": null,\r\n    \"ClienteNombre\": null,\r\n    \"ClienteApellido\": \"Perez\",\r\n    \"ClienteTelefono\": \"3187658909\",\r\n    \"ClienteCorreo\": \"nrw@numrot.com\",\r\n    \"Franquicia\": null,\r\n    \"CodigoAprobacion\": null,\r\n    \"CodigoServicio\": null,\r\n    \"CodigoBanco\": null,\r\n    \"NombreBanco\": null,\r\n    \"CodigoTransaccion\": null,\r\n    \"CicloTransaccion\": null,\r\n    \"EstadoPagoCodigo\": null,\r\n    \"EstadoPagoTexto\": null,\r\n    \"ClienteDireccion\": null,\r\n    \"ClienteCiudad\": null,\r\n    \"ClienteDepartamento\": null,\r\n    \"ClientePais\": null,\r\n    \"ClienteMovil\": null,\r\n    \"ValorBaseDevolucion\": null,\r\n    \"Referencia01\": null,\r\n    \"Referencia02\": null,\r\n    \"Referencia03\": null,\r\n    \"Referencia04\": null,\r\n    \"CodigoError\": null,\r\n    \"MensajeError\": null,\r\n    \"UsuarioAgente\": \"null\",\r\n    \"DireccionIp\": \"null\",\r\n    \"EsTarjetaCredito\": null,\r\n    \"DocumentoLista\": [\r\n        {\r\n            \"IdEmpresa\": \"DiabonosPrueba\",\r\n            \"ProveedorPagos\": \"Wompi\",\r\n            \"IdDocumento\": \"FEQ83x\",\r\n            \"TipoDocumento\": \"facturadeventa\",\r\n            \"ValorTotal\": 228256.0,\r\n            \"ValorIva\": null,\r\n            \"NumeroCuota\": null,\r\n            \"ValorCuota\": null,\r\n            \"ValorPagadoCuota\": null,\r\n            \"ValorPagadoDocumento\": 228256.0\r\n        }\r\n    ],\r\n    \"PagoInfoAdicional\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://numrot3.net:44301/api/numrotpagos/iniciarprocesopago",
+							"protocol": "https",
+							"host": [
+								"numrot3",
+								"net"
+							],
+							"port": "44301",
+							"path": [
+								"api",
+								"numrotpagos",
+								"iniciarprocesopago"
+							]
+						},
+						"description": "A este endpoint podrá enviar la información de una nueva transación para iniciar un pago."
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener estados de pagos Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkRpYWJvbm9zUHJ1ZWJhIiwicm9sZSI6IkNsaWVudGUiLCJuYmYiOjE3MjU2MzkzNTgsImV4cCI6MTcyNTY0Mjk1OCwiaWF0IjoxNzI1NjM5MzU4LCJpc3MiOiJOclBhZ29zIiwiYXVkIjoiTnJQYWdvc0NsaWVudGVzIn0.VpQVYLF7U_DvhXes3nKxzV_s0Rp2ezGLGfvVzKotdiY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"IdEmpresa\": \"DiabonosPrueba\",\r\n        \"IdDocumento\": \"FEQ83x\",\r\n        \"TipoDocumento\": \"facturadeventa\"\r\n    },\r\n    {\r\n        \"IdEmpresa\": \"DiabonosPrueba\",\r\n        \"IdDocumento\": \"2FE60012\",\r\n        \"TipoDocumento\": \"facturadeventa\"\r\n    },\r\n    {\r\n        \"IdEmpresa\": \"DiabonosPrueba\",\r\n        \"IdDocumento\": \"5FE21356\",\r\n        \"TipoDocumento\": \"facturadeventa\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://numrot3.net:44301/api/numrotpagos/consultarestados/DiabonosPrueba",
+							"protocol": "https",
+							"host": [
+								"numrot3",
+								"net"
+							],
+							"port": "44301",
+							"path": [
+								"api",
+								"numrotpagos",
+								"consultarestados",
+								"DiabonosPrueba"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Este es un ambiente con datos y aplicaciones de prueba configurado para que pueda explorar los recursos expuestos y testear su integración."
+		},
+		{
+			"name": "Produccion",
+			"item": [
+				{
+					"name": "Autenticarse",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Username\": \"\",\r\n    \"Password\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://numrot3.net/api/numrotpagos/login",
+							"protocol": "https",
+							"host": [
+								"numrot3",
+								"net"
+							],
+							"path": [
+								"api",
+								"numrotpagos",
+								"login"
+							]
+						},
+						"description": "El primer llamado que debe realizar a nuestra api es para autenticarse y recibir un token de acceso.\n\nEste token lo podrá usar para consumir los demás recursos del api y tiene un tiempo de expiración de 60 minutos."
+					},
+					"response": []
+				},
+				{
+					"name": "IniciarProcesoPago",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkRpYWJvbm9zIiwicm9sZSI6IkNsaWVudGUiLCJuYmYiOjE3MjY1MDQwNTcsImV4cCI6MTcyNjUwNzY1NywiaWF0IjoxNzI2NTA0MDU3LCJpc3MiOiJOclBhZ29zIiwiYXVkIjoiTnJQYWdvc0NsaWVudGVzIn0.d3kkkNH_3qrNoxV_C5VzSrKxSuTxzkZ1PAsfDGTGOy0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"IdEmpresa\": \"Diabonos\",\r\n    \"Descripcion\": \"Pago de los documentos: FEQ8311\",\r\n    \"PagoTS\": null,\r\n    \"FormaPago\": null,\r\n    \"ValorTotal\": 228256.0,\r\n    \"ValorIva\": null,\r\n    \"Moneda\": \"COP\",\r\n    \"TicketId\": null,\r\n    \"IdCliente\": \"1152713763\",\r\n    \"ClienteTipoId\": null,\r\n    \"ClienteNombre\": null,\r\n    \"ClienteApellido\": \"Perez\",\r\n    \"ClienteTelefono\": \"3187658909\",\r\n    \"ClienteCorreo\": \"nrw@numrot.com\",\r\n    \"Franquicia\": null,\r\n    \"CodigoAprobacion\": null,\r\n    \"CodigoServicio\": null,\r\n    \"CodigoBanco\": null,\r\n    \"NombreBanco\": null,\r\n    \"CodigoTransaccion\": null,\r\n    \"CicloTransaccion\": null,\r\n    \"EstadoPagoCodigo\": null,\r\n    \"EstadoPagoTexto\": null,\r\n    \"ClienteDireccion\": null,\r\n    \"ClienteCiudad\": null,\r\n    \"ClienteDepartamento\": null,\r\n    \"ClientePais\": null,\r\n    \"ClienteMovil\": null,\r\n    \"ValorBaseDevolucion\": null,\r\n    \"Referencia01\": null,\r\n    \"Referencia02\": null,\r\n    \"Referencia03\": null,\r\n    \"Referencia04\": null,\r\n    \"CodigoError\": null,\r\n    \"MensajeError\": null,\r\n    \"UsuarioAgente\": \"null\",\r\n    \"DireccionIp\": \"null\",\r\n    \"EsTarjetaCredito\": null,\r\n    \"DocumentoLista\": [\r\n        {\r\n            \"IdEmpresa\": \"Diabonos\",\r\n            \"ProveedorPagos\": \"Wompi\",\r\n            \"IdDocumento\": \"FEQ8311\",\r\n            \"TipoDocumento\": \"facturadeventa\",\r\n            \"ValorTotal\": 228256.0,\r\n            \"ValorIva\": null,\r\n            \"NumeroCuota\": null,\r\n            \"ValorCuota\": null,\r\n            \"ValorPagadoCuota\": null,\r\n            \"ValorPagadoDocumento\": 228256.0\r\n        }\r\n    ],\r\n    \"PagoInfoAdicional\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://numrot3.net/api/numrotpagos/iniciarprocesopago",
+							"protocol": "https",
+							"host": [
+								"numrot3",
+								"net"
+							],
+							"path": [
+								"api",
+								"numrotpagos",
+								"iniciarprocesopago"
+							]
+						},
+						"description": "A este endpoint podrá enviar la información de una nueva transación para iniciar un pago."
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener estados de pagos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkRpYWJvbm9zIiwicm9sZSI6IkNsaWVudGUiLCJuYmYiOjE3MjY1MDQwNTcsImV4cCI6MTcyNjUwNzY1NywiaWF0IjoxNzI2NTA0MDU3LCJpc3MiOiJOclBhZ29zIiwiYXVkIjoiTnJQYWdvc0NsaWVudGVzIn0.d3kkkNH_3qrNoxV_C5VzSrKxSuTxzkZ1PAsfDGTGOy0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"IdEmpresa\": \"Diabonos\",\r\n        \"IdDocumento\": \"FEQ8311\",\r\n        \"TipoDocumento\": \"facturadeventa\"\r\n    },\r\n    {\r\n        \"IdEmpresa\": \"Diabonos\",\r\n        \"IdDocumento\": \"2FE60012\",\r\n        \"TipoDocumento\": \"facturadeventa\"\r\n    },\r\n    {\r\n        \"IdEmpresa\": \"Diabonos\",\r\n        \"IdDocumento\": \"5FE21356\",\r\n        \"TipoDocumento\": \"facturadeventa\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://numrot3.net/api/numrotpagos/consultarestados/Diabonos",
+							"protocol": "https",
+							"host": [
+								"numrot3",
+								"net"
+							],
+							"path": [
+								"api",
+								"numrotpagos",
+								"consultarestados",
+								"Diabonos"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Mediante el Api de NRPagos podrás Auntenticarte, Iniciar un proceso de pago y consultar el estado de pagos realizados."
+		}
+	]
+}
